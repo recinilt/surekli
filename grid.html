@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Getiri Hesaplama</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .sonuc {
+      margin-top: 20px;
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Geometrik Grid Getiri Hesaplama</h2>
+
+  <label>Yatırılan Miktar (USDT):</label>
+  <input type="number" id="yatirilan" oninput="hesapla()">
+
+  <label>Geometrik Grid Sayısı:</label>
+  <input type="number" id="grid" oninput="hesapla()">
+
+  <label>Gridler Arası Kar Yüzdesi (%):</label>
+  <input type="number" id="kar" oninput="hesapla()">
+
+  <label>Günlük Kaç İşlem Yapılacak:</label>
+  <input type="number" id="islem" oninput="hesapla()">
+
+  <label>Dolar Kaç TL (Varsayılan: 38 TL.):</label>
+  <input type="number" id="dolar" oninput="hesapla()">
+
+  <div class="sonuc">
+    <p>Bir İşlemden Kazanılacak: <span id="bir_islem"></span></p>
+    <p>Günlük Grid Getirisi: <span id="gunluk"></span></p>
+    <p>Aylık Grid Getirisi: <span id="aylik"></span></p>
+  </div>
+
+  <script>
+    function hesapla() {
+      const yatirilan = parseFloat(document.getElementById('yatirilan').value) || 0;
+      const grid = parseFloat(document.getElementById('grid').value) || 0;
+      const kar = parseFloat(document.getElementById('kar').value) || 0;
+      const islem = parseFloat(document.getElementById('islem').value) || 0;
+      const dolar = parseFloat(document.getElementById('dolar').value) || 38;
+
+      let birIslemKazanci = 0;
+      if (grid > 0) {
+        birIslemKazanci = (yatirilan / grid) * (kar / 100);
+      }
+
+      const gunlukGetiri = birIslemKazanci * islem;
+      const aylikGetiri = gunlukGetiri * 30;
+
+      document.getElementById('bir_islem').textContent = birIslemKazanci.toFixed(2) + " $, " + (birIslemKazanci * dolar).toFixed(2) + " ₺";
+      document.getElementById('gunluk').textContent = gunlukGetiri.toFixed(2) + " $, " + (gunlukGetiri * dolar).toFixed(2) + " ₺";
+      document.getElementById('aylik').textContent = aylikGetiri.toFixed(2) + " $, " + (aylikGetiri * dolar).toFixed(2) + " ₺";
+    }
+  </script>
+
+</body>
+</html>
