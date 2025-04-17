@@ -75,9 +75,9 @@
       const amorti = (yatirilan/gunlukGetiri);
 
       document.getElementById('bir_islem').textContent = birIslemKazanci.toFixed(2) + " $, " + (birIslemKazanci * dolar).toFixed(2) + " ₺";
-      document.getElementById('gunluk').textContent = gunlukGetiri.toFixed(2) + " $, " + (gunlukGetiri * dolar).toFixed(2) + " ₺, " + ((gunlukGetiri/yatirilan)*100).toFixed(10) + " %" ;
-      document.getElementById('aylik').textContent = aylikGetiri.toFixed(2) + " $, " + (aylikGetiri * dolar).toFixed(2) + " ₺, " + ((aylikGetiri/yatirilan)*100).toFixed(10) + " %";
-      document.getElementById('yillik').textContent = yillikGetiri.toFixed(2) + " $, " + (yillikGetiri * dolar).toFixed(2) + " ₺, " + ((yillikGetiri/yatirilan)*100).toFixed(10) + " %";
+      document.getElementById('gunluk').textContent = gunlukGetiri.toFixed(2) + " $, " + (gunlukGetiri * dolar).toFixed(2) + " ₺, " + ((gunlukGetiri/yatirilan)*100).toFixed(2) + " %" ;
+      document.getElementById('aylik').textContent = aylikGetiri.toFixed(2) + " $, " + (aylikGetiri * dolar).toFixed(2) + " ₺, " + ((aylikGetiri/yatirilan)*100).toFixed(2) + " %";
+      document.getElementById('yillik').textContent = yillikGetiri.toFixed(2) + " $, " + (yillikGetiri * dolar).toFixed(2) + " ₺, " + ((yillikGetiri/yatirilan)*100).toFixed(2) + " %";
       document.getElementById('amorti').textContent = amorti.toFixed(0) + " gün ";
       
     }
